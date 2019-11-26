@@ -2,5 +2,6 @@ import pandas as pd
 A = pd.read_csv('cars.csv')
 B = A.loc[[0,1,2,3,4,27,28,29,30,31],:]
 C = A.iloc[:,::2]
-D = A.loc[[0],['Model']]
-E = A.iloc[23,[0,2]]
+D = A[A['Model'].str.contains('Mazda RX4')]
+E = A.loc[A.Model.str.match('Camaro Z28'),['Model','cyl']]
+F = A.loc[A.Model.str.match('Mazda RX4 Wag')|A.Model.str.match('Ford Pantera L')|A.Model.str.match('Honda Civic'),['Model','cyl','gear']]
